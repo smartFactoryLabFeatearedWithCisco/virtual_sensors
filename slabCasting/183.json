@@ -1,0 +1,8 @@
+{
+    "temp(melt)": 380.1,
+    "temp(cooler)": 25.6,
+    "gas(melt)": 38.6,
+    "elec_use": 872.0,
+    "gas_use": "2024-04-01 00:00:00",
+    "Name": "slabCasting"
+}

@@ -1,0 +1,8 @@
+{
+    "temp(melt)": 452.0,
+    "temp(air)": 34.4,
+    "gas(melt)": 48.0,
+    "gas_use": 10.0,
+    "filter_use": 12.0,
+    "Name": "deGassingM"
+}

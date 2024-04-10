@@ -1,0 +1,8 @@
+{
+    "temp(melt)": 380.0,
+    "temp(air)": 38.3,
+    "gas(melt)": 61.0,
+    "gas_use": 10.0,
+    "elec_use": 200.0,
+    "Name": "coldMillingM"
+}
