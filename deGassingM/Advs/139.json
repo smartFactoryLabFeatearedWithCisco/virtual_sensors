@@ -4,5 +4,6 @@
     "gas(melt)": 100.0,
     "gas_use": 10.0,
     "filter_use": 12.0,
+    "elec_use": 515.0,
     "Name": "deGassingM"
 }
