@@ -54,7 +54,7 @@ def disconnect():
     sio.connect(dest, transports=['websocket'])
 
 # Specify server address
-dest = 'http://10.225.5.5:3000'
+dest = 'http://10.150.1.12:3000'
 
 # Specify the directory where the JSON files are stored
 json_dir = "meltingM/Advs"
