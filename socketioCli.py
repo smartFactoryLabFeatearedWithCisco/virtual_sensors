@@ -23,6 +23,8 @@ def message():
     sizak = True
     # Iterate over each JSON file
     for json_file in json_files:
+        if stop:
+            break
         time.sleep(1)
         # Construct the full path to the JSON file
         json_path = os.path.join(json_dir, json_file)
@@ -37,16 +39,22 @@ def message():
 
         sio.emit('sensor Data', data)
 
-@sio.on('emergency stop')
-def message():
-    print("emergency stopping!")
+@sio.on('stop')
+def message(data):
+    if "emergency" in data:
+        print("Emergency stopping!!")
+    print("Stopping machines...")
+    stop = True
 
 
 # Define the event handler for the "disconnect" event
 @sio.event
 def disconnect():
     print("I'm disconnected!")
-    sio.connect('http://10.225.5.5:3000', transports=['websocket'])
+    sio.connect(dest, transports=['websocket'])
+
+# Specify server address
+dest = 'http://10.225.5.5:3000'
 
 # Specify the directory where the JSON files are stored
 json_dir = "meltingM/Advs"
@@ -58,15 +66,13 @@ json_files = [f for f in os.listdir(json_dir) if f.endswith('.json')]
 json_files.sort()
 
 # Connect to the server
-sio.connect('http://10.225.5.5:3000', transports=['websocket'])
+sio.connect(dest, transports=['websocket'])
 
 sizak = False
+stop = False
 
 while True:
-    if sizak:
-        
-
-    else:
+    if not sizak:
         time.sleep(1)
         temp_json_path = os.path.join(json_dir, "0.json")
         # Open the JSON file and load the data
