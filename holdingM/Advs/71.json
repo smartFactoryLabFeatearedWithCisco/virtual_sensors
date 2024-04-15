@@ -2,5 +2,6 @@
     "temp(melt)": 725.7,
     "temp(air)": 41.3,
     "gas(melt)": 56.800000000000004,
+    "elec_use": 235.0,
     "Name": "holdingM"
 }

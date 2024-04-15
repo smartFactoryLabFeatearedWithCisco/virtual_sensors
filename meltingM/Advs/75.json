@@ -3,5 +3,6 @@
     "temp(air)": 42.5,
     "gas(melt)": 75.0,
     "gas_use": 10.0,
+    "elec_use": 375.0,
     "Name": "meltingM"
 }
