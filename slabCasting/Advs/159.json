@@ -3,6 +3,5 @@
     "temp(cooler)": 28.0,
     "gas(melt)": 87.8,
     "elec_use": 776.0,
-    "gas_use": "2024-04-01 00:00:00",
     "Name": "slabCasting"
 }
