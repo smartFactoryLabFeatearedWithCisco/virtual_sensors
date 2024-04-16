@@ -57,7 +57,7 @@ def disconnect():
 dest = 'http://10.150.1.11:3000'
 
 # Specify the directory where the JSON files are stored
-json_dir = "anellingM/Advs"
+json_dir = "annellingM/Advs"
 
 # Get a list of all JSON files in the directory
 json_files = [f for f in os.listdir(json_dir) if f.endswith('.json')]
