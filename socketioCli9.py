@@ -21,23 +21,6 @@ def message(data):
 @sio.on('sizak')
 def message():
     sizak = True
-    # Iterate over each JSON file
-    for json_file in json_files:
-        if stop:
-            break
-        time.sleep(1)
-        # Construct the full path to the JSON file
-        json_path = os.path.join(json_dir, json_file)
-    
-        # Open the JSON file and load the data
-        with open(json_path, 'r') as f:
-            data = json.load(f)
-        data = json.dumps(data)
-
-        # Now you can use the data from the JSON file
-        print(f"Loaded Advs data from " + str(data))
-
-        sio.emit('sensor Data', data)
 
 @sio.on('stop')
 def message(data):
@@ -57,7 +40,7 @@ def disconnect():
 dest = 'http://10.150.1.11:3000'
 
 # Specify the directory where the JSON files are stored
-json_dir = "annellingM/Advs"
+#json_dir = "meltingM/Advs"
 
 # Get a list of all JSON files in the directory
 json_files = [f for f in os.listdir(json_dir) if f.endswith('.json')]
@@ -71,10 +54,17 @@ sio.connect(dest, transports=['websocket'])
 sizak = False
 stop = False
 
+timeCnt = 0
+timeThresh = 60 # 60sec
+
 while True:
+    if timeCnt == timeThresh:
+        print("Machine On")
+        sizak = True
     if not sizak:
         time.sleep(1)
-        temp_json_path = os.path.join(json_dir, "0.json")
+        timeCnt+=1
+        temp_json_path = os.path.join("annellingM/Temps", "0.json")
         # Open the JSON file and load the data
         with open(temp_json_path, 'r') as f:
             data = json.load(f)
@@ -84,7 +74,25 @@ while True:
         print(f"Loaded Temps data from " + str(data))
 
         sio.emit('sensor Data', data)
+    else:
+         # Iterate over each JSON file
+        for json_file in json_files:
+            if stop:
+                break
+            time.sleep(1)
+            # Construct the full path to the JSON file
+            json_path = os.path.join("annellingM/Advs", json_file)
     
+            # Open the JSON file and load the data
+            with open(json_path, 'r') as f:
+            data = json.load(f)
+            data = json.dumps(data)
+
+            # Now you can use the data from the JSON file
+            print(f"Loaded Advs data from " + str(data))
+
+            sio.emit('sensor Data', data)
+
     
     
     
